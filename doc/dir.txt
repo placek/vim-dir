@@ -1,0 +1,84 @@
+*dir.txt*  Simple directory browser
+
+Author:  Paweł Placzyński <placzynski.pawel@gmail.com>
+Repo:    https://github.com/placek/vim-dir
+License: Same terms as Vim itself (see |license|)
+
+SUMMARY                                         *dir*
+
+By default Vim is delivered with |netrw| plugin, which is bloated, unintuitive
+and buggy.  Hence the |dir|.
+
+|dir| is a simple directory browser, that uses the same principles as normal Vim
+buffer.  In fact it does use the dedicated Vim buffer with specific |dir|
+filetype.  Inspired by vim-vinegar plugin
+(https://github.com/tpope/vim-vinegar).
+
+INTERFACE                                       *dir-interface*
+
+                                                *:Dir*
+:Dir {directory}        Open {directory} in current window.  Suppress if the
+                        buffer in the current window is modified.
+
+                                                *:Dir!*
+:Dir! {directory}       Open {directory} in current window.  Ignore the buffer
+                        in current window.
+
+                                                *:Sir*
+:Sir {directory}        Open {directory} in horizontal split.
+
+                                                *:Sir!*
+:Sir! {directory}       Open {directory} in horizontal split.
+
+                                                *:Vir*
+:Vir {directory}        Open {directory} in vertical split.
+
+                                                *:Sir!*
+:Vir! {directory}       Open {directory} in vertical split.
+
+FILE TYPE                                       *dir-filetype*
+
+The |dir| filetype is a simple syntax consisting of three different items:
+
+  Highlight       Example                    Explanation ~
+  |dirHeader|       [/home/placek/projects]    The header of the |dir| file.  The
+                                             path of the directory.
+  |dirDirectory|    some_dir/                  The subdirectory.
+  |dirFile|         some_file                  The file.
+
+MAPPING                                         *dir-mapping*
+
+The |dir-filetype| has some mappings of its own:
+
+                                                *h* *<left>*
+h           or
+<left>                Move up the directory.
+
+                                                *l* *<right>* *<cr>*
+l           or
+<right>     or
+<cr>                  Change directory to the subdirectory under the cursor or
+                      edit a file under the cursor.
+
+                                                *.*
+.                     Toggle |dir_filtering|.
+
+FILTERING                                       *dir-filtering*
+
+|dir| is using simple, regex-based filtering.  The pattern is checked against
+the file or dir name and if it match, then it is rendered.
+
+                                                *g:dir_filter*
+The pattern can be set with the global variable:
+>
+>
+        let g:dir_filter   = '^[^\.].*'
+<
+                                                *g:dir_filtered*
+
+The filtering can be turned off by default by setting a global variable:
+>
+        let g:dir_filtered = 1
+<
+
+ vim:tw=78:et:ft=help:norl:
