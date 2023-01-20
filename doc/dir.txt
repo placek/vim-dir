@@ -52,16 +52,16 @@ The |dir-filetype| has some mappings of its own:
 
                                                 *h* *<left>*
 h           or
-<left>                Move up the directory.
+<left>                  Move up the directory.
 
                                                 *l* *<right>* *<cr>*
 l           or
 <right>     or
-<cr>                  Change directory to the subdirectory under the cursor or
-                      edit a file under the cursor.
+<cr>                    Change directory to the subdirectory under the cursor or
+                        edit a file under the cursor.
 
                                                 *.*
-.                     Toggle |dir_filtering|.
+.                       Toggle |dir_filtering|.
 
 FILTERING                                       *dir-filtering*
 
